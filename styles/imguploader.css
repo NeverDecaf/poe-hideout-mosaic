@@ -4,10 +4,10 @@ body {
 a {
   color: #369;
 }
-.note, h1 {
+.note, h1, ul,h3{
   width: 500px;
   margin: 50px auto;
-  font-size: 1.1em;
+  /* font-size: 1.1em; */
   color: #333;
   text-align: justify;
 }
