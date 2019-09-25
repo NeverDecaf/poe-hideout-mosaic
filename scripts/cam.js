@@ -606,7 +606,7 @@ function previewFile(file) {
 		oCanvas = document.createElement('canvas');
 
 		// alert(imga.width)
-		let fast_resize =document.getElementById("fast_resize").checked
+		let fast_resize = document.getElementById("fast_resize").checked
 		if (!fast_resize && (imga.width > HIDEOUT_WIDTH || imga.height > HIDEOUT_HEIGHT)) {
 			if (imga.height > imga.width)
 				new thumbnailer(oCanvas, imga, parseInt(HIDEOUT_HEIGHT/imga.height*imga.width), 3)
@@ -632,42 +632,47 @@ function previewFile(file) {
 				tmpCtx.drawImage(imga,0,0,rw,rh)
 			}
 		}
-		
 		let tmpCanvas = document.createElement('canvas');
 		tmpCanvas.width = oCanvas.width;
 		tmpCanvas.height = oCanvas.height;
-		// alert('thumb');
-		// alert(tmpCanvas.width)
 		ax = Math.floor((res.width - tmpCanvas.width) /2)
 		ay = Math.floor((res.height - tmpCanvas.height) /2)
-		// return;
 		var th=parseInt(document.getElementById("thresholdRange").value);
-		var count = 751;
 		let ctx = tmpCanvas.getContext("2d")
-		while (count > 750 && th <245) {
+		
+		if (imga.width <= HIDEOUT_WIDTH && imga.height <= HIDEOUT_HEIGHT)
+		{
 			ctx.drawImage(oCanvas,0,0)
-			// ctx.drawImage(img,0,0,56,56); // Or at whatever offset you like
-			sobel(tmpCanvas,th)
-			// var px = ctx.getImageData(0,0,res.width,res.height)
-			var px = ctx.getImageData(0,0,oCanvas.width,oCanvas.height)
-			count = 0
-			for (var x=BORDER; x<px.width-BORDER; x++) {
-			for (var y=BORDER; y<px.height-BORDER; y++) {
-			if (px.data[4*(x*px.width + y)]) {
-				count++;
-			}}}
-			// for (var i=0; i<px.data.length; i+=4) {
-				// if (px.data[i]) {
-					// count++;
-				// }
-		// }
-		th+=5;
+		}
+		else {
+			var count = 751;
+			let ctx = tmpCanvas.getContext("2d")
+			while (count > 750 && th <245) {
+				ctx.drawImage(oCanvas,0,0)
+				// ctx.drawImage(img,0,0,56,56); // Or at whatever offset you like
+				sobel(tmpCanvas,th)
+				// var px = ctx.getImageData(0,0,res.width,res.height)
+				var px = ctx.getImageData(0,0,oCanvas.width,oCanvas.height)
+				count = 0
+				for (var x=BORDER; x<px.width-BORDER; x++) {
+				for (var y=BORDER; y<px.height-BORDER; y++) {
+				if (px.data[4*(x*px.width + y)]) {
+					count++;
+				}}}
+				// for (var i=0; i<px.data.length; i+=4) {
+					// if (px.data[i]) {
+						// count++;
+					// }
+			// }
+			th+=5;
+			}
 		}
 		let rctx = res.getContext("2d")
 		rctx.rect(0,0,rctx.canvas.width,rctx.canvas.height)
 		rctx.fillStyle = 'black'
 		rctx.fill()
 		rctx.drawImage(tmpCanvas,ax,ay)
+		
 		// row.appendChild(tmpCanvas)
 		// dl.innerHTML = th;
 		// dl.innerHTML = "Download hideout"// (" + th + ")"
