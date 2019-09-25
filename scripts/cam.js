@@ -398,14 +398,15 @@ return Filters.threshold(id,50);
           // b.textContent = 'Restore original image';
         // }
       // }
-	  
-	  
-function updateTextInput(val) {
-          document.getElementById('thresholdRange').value=val; 
-        }
-function updateThinInput(val) {
-          document.getElementById('thinningRange').value=val; 
-        }
+document.getElementById('thresholdInput').addEventListener( 'change', function(evt) {
+          document.getElementById('thresholdRange').value=evt.target.value; 
+        }, false);
+document.getElementById('thinningInput').addEventListener( 'change', function(evt) {
+          document.getElementById('thinningRange').value=evt.target.value; 
+        }, false);
+// function updateThinInput(val) {
+          // document.getElementById('thinningRange').value=val; 
+        // }
 // ************************ Drag and drop ***************** //
 let dropArea = document.getElementById("drop-area")
 
