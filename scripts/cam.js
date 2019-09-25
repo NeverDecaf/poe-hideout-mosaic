@@ -678,7 +678,7 @@ function previewFile(file) {
 		// dl.innerHTML = "Download hideout"// (" + th + ")"
 		row.style.display = 'block';
 		
-		dl.onclick = function(){ download("hello.hideout",img_to_hideout(rctx.getImageData(0,0,res.width,res.height)))}
+		dl.onclick = function(){ download(file.name.split('.').slice(0, -1).join('.') + ".hideout",img_to_hideout(rctx.getImageData(0,0,res.width,res.height)))}
 		// alert(th)
 		// new thumbnailer(res, img, 150, 3);
 	};
