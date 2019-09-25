@@ -669,7 +669,8 @@ function previewFile(file) {
 		rctx.fill()
 		rctx.drawImage(tmpCanvas,ax,ay)
 		// row.appendChild(tmpCanvas)
-		dl.innerHTML = th;
+		// dl.innerHTML = th;
+		// dl.innerHTML = "Download hideout"// (" + th + ")"
 		row.style.display = 'block';
 		
 		dl.onclick = function(){ download("hello.hideout",img_to_hideout(rctx.getImageData(0,0,res.width,res.height)))}
