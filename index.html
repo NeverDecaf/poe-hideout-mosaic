@@ -1,0 +1,41 @@
+<!-- Either include the full CamanJS code including plugins -->
+<script type="text/javascript" src="caman.full.min.js"></script>
+
+<!-- Or include the core library and some plugins/filters -->
+<script type="text/javascript" src="caman.min.js"></script>
+<link rel="stylesheet" href="styles/imguploader.css">
+<img id="scream" src="demo_small.png" alt="The Scream" style="display:none">
+
+<h1>Hideout Pixel Art Generator</h1>
+<!-- <div class="col-lg-6"> -->
+  <!-- <canvas id="canvas" width="600" height="337"></canvas> -->
+<!-- </div> -->
+<div id="settings">
+<label class="container">Rotate Tiles 45 Degrees
+  <input type="checkbox" id="rotate_tiles">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Threshold
+<input type="range" name="rangeInput" min="40" max="240" onchange="updateTextInput(this.value);" value="40">
+<input type="text" id="thresholdRange" value="40" readonly>
+</label>
+
+<label class="container">Thinning Passes
+<input type="range" name="thinningInput" min="0" max="10" onchange="updateThinInput(this.value);" value="0">
+<input type="text" id="thinningRange" value="0" readonly>
+</label>
+
+<label class="container">Fast Resize (lower quality)
+  <input type="checkbox" id="fast_resize">
+  <span class="checkmark"></span>
+</label>
+</div>
+<div id="drop-area">
+  <form class="my-form">
+    <p>Upload files by dragging and dropping images onto the dashed region</p>
+    <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+    <label class="button" for="fileElem">Select files</label>
+  </form>
+  <div id="gallery" /></div>
+</div>
+<script type="text/javascript" src="scripts/cam.js"></script>
